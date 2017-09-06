@@ -1,2 +1,188 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+---
+title: PriceIt- home
+---
+<!--
+def iter(name)
+  (0..11).each do |j|
+    "<th id = name> </th>"
+       end
+end
+
+ -->
+
+<div class="wrapper-grey">
+<!-- <div class: "btn btn--border btn--primary btn--animated" >Shalom</div>
+ -->
+
+ <div class="hide" id="container-table">
+  <button id="button-update" class="btn btn-sm"> Edit figures</button>
+  <table class = "detailstable">
+  <tr>
+    <th></th>
+    <% (0..11).each do |j| %>
+      <th><%= 2016 + j%></th>
+    <% end %>
+  </tr>
+  <tr>
+    <td>revenue</td>
+      <% (0..11).each do |j| %>
+        <td id = "rev_<%=j %>"> </td>
+      <% end %>
+  </tr>
+
+  <tr>
+    <td>revenue growth</td>
+      <% (0..11).each do |j| %>
+        <td id = "revgrth_<%=j %>"> </td>
+      <% end %>
+  </tr>
+
+    <tr>
+      <td>EBITDA </td>
+        <% (0..11).each do |j| %>
+          <td id = "ebitda_<%=j %>"> </td>
+        <% end %>
+    </tr>
+    <tr>
+      <td>EBITDA margin</td>
+        <% (0..11).each do |j| %>
+          <td id = "ebitdamar_<%=j %>"> </td>
+        <% end %>
+    </tr>
+    <tr>
+      <td>DA</td>
+        <% (0..11).each do |j| %>
+          <td id = "da_<%=j %>"> </td>
+       <% end %>
+    </tr>
+      <tr>
+        <td>DA as a % of sales</td>
+          <% (0..11).each do |j| %>
+            <td id = "damar_<%=j %>"> </td>
+        <% end %>
+      </tr>
+      <tr>
+        <td>EBIT</td>
+          <% (0..11).each do |j| %>
+            <td id = "ebit_<%=j %>"> </td>
+          <% end %>
+      </tr>
+      <tr>
+        <td>Tax</td>
+          <% (0..11).each do |j| %>
+            <td id = "tax_<%=j %>"> </td>
+          <% end %>
+      </tr>
+      <tr>
+        <td>Tax rate</td>
+          <% (0..11).each do |j| %>
+            <td id = "taxrate_<%=j %>"> </td>
+        <% end %>
+      </tr>
+        <tr>
+          <td>CAPEX</td>
+            <% (0..11).each do |j| %>
+              <td id = "cap_<%=j %>"> </td>
+            <% end %>
+        </tr>
+      <tr>
+        <td> CAPEX as a % of sales</td>
+          <% (0..11).each do |j| %>
+            <td id = "capmar_<%=j %>"> </td>
+          <% end %>
+      </tr>
+      <tr>
+        <td> WC </td>
+         <% (0..11).each do |j| %>
+          <td id = "wc_<%=j %>"> </td>
+        <% end %>
+      </tr>
+      <tr>
+        <td> WC s a % of sales</td>
+          <% (0..11).each do |j| %>
+            <td id = "wcmar_<%=j %>"> </td>
+          <% end %>
+      </tr>
+      <tr>
+        <td> Delta WC </td>
+          <% (0..11).each do |j| %>
+            <td id = "dwc_<%=j %>"> </td>
+          <% end %>
+      </tr>
+      <tr>
+        <td> FCF to the firm </td>
+          <% (0..11).each do |j| %>
+            <td id = "fcf_<%=j %>"> </td>
+          <% end %>
+      </tr>
+      <tr>
+        <td> Discount rate</td>
+          <% (0..11).each do |j| %>
+            <td id = "dsctrt_<%=j %>"> </td>
+          <% end %>
+      </tr>
+      <tr>
+        <td> WACC</td>
+          <% (0..11).each do |j| %>
+            <td id = "wacc_<%=j %>"> </td>
+          <% end %>
+      </tr>
+      <td> Terminal Value</td>
+          <% (0..11).each do |j| %>
+            <td id = "ter_<%=j %>"> </td>
+          <% end %>
+      </tr>
+      <td> DCF</td>
+          <% (0..11).each do |j| %>
+            <td id = "dcf_<%=j %>"> </td>
+          <% end %>
+      </tr>
+
+    </table>
+</div>
+
+<% i=1 %>
+
+  <div class="container-cards">
+    <div class="row">
+      <% data.cards.each do |card, details| %>
+        <% if card == "Share" %>
+          <div class="col-xs-12 col-md-6 col-sm-offset-3">
+        <% else %>
+          <div class="col-xs-12 col-md-6">
+        <% end %>
+            <div class="card <%= card %>">
+
+              <div class="card-header">
+                <h2> <%= details.name %></h2>
+                <div class="container-result">
+                  <div class="card-result " id = "card_result_<%= card %>"> </div>
+                  </div>
+              </div>
+
+              <div class = "card-body row" id="inputs_<%= card %>">
+                <% (0..details.input.length-1).each do |index| %>
+                  <div class= "input-button">
+                    <label for="<%= details.input[index].split(" ").join %>">
+                    <%= details.input[index] %>
+                    </label>
+                    <input type="text" class="form-control"  id="<%= details.input[index].split(" ").join %>" placeholder="<%= details.default_input[index] %>" >
+                  </div>
+                <% end %>
+              </div>
+
+              <div class="card-footer hidden-xs hidden-sm">
+                <h5><%= details.description %></h5>
+              </div>
+            </div>
+          </div>
+        <% i+=1 %>
+      <% end %>
+      </div>
+    </div>
+    <button id="button-adjust" class="btn btn-sm"> Adjust figures</button>
+
+  </div>
+</div>
+
+

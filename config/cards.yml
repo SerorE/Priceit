@@ -1,0 +1,16 @@
+
+WACC:
+  name: "first, WACC"
+  description: "Weighted Average Cost of Capital (WACC) is a calculation of a firm's cost of capital in which each category of capital is proportionately weighted."
+  input: ["cost equity", "prct of equity", "cost debt", "prct of debt"]
+  default_input: ["8", "50", "5", "50"]
+FCF:
+  name: "then, FCFs"
+  description: "Free Cash Flows (FCFs) amount to the cash available to investors after a company has paid all of its costs of doing business, invests in current assets and invests in long-term assets."
+  input: ["last annual revenue", "normal growth rate ", "terminal growth rate", "EBITDA margin", "tax rate","capex prct of sales", " WC prct of sales"]
+  default_input: ["600", "7", "2.5", "30", "31.5", "5", "5"]
+Share:
+  name: "finally, share price"
+  description: "The sum of FCFs (the last one being the estimated terminal value of the company) equals to the estimated enterprise value, or EV. We then substract net nebt and minorities, and divide by the nb of shares to obtain the share price. "
+  input: ["net debt", "minorities", "nb of shares"]
+  default_input: ["1000", "0", "2000"]
